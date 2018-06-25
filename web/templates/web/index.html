@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dashboard</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="{% static "web/style.css" %}" />
+	
+</head>
+<body>
+
+<header class="grid-x" id="intro">
+
+		<div class="intro">
+			<figure class="logo">
+				<!-- <img src="images/RJRI.png" alt="Real Jobs Rhode Island">-->
+				<a href="{% url 'web:upload_csv' %}"><img src="{% static "web/images/RJRI.png" %}" alt="Real Jobs Rhode Island"></a>
+			</figure>
+			
+			<h1>Program Report</h1>
+			<p>Real Jobs RI grows business-led partnerships that build workforce solutions to address their unique workforce challenges. Solutions can include:</p>
+			<ul>
+				<li>Placing new employees into immediate job openings;</li>
+				<li>Upskilling current employees to advance skills and/or remain competitive;</li>
+				<li>Creating pipelines of talent for the future.</li>
+			</ul>
+			<p>Real Jobs RI is a win-win because companies get the talent they need to compete globally and grow locally, and Rhode Islanders get opportunities to thrive in a flourishing economy.</p>
+		</div>
+</header>
+
+<nav>
+	<div>
+		<ul>
+			<li><a href="#starts">Employers</a></li>
+			<li><a href="#performance">Performance</a></li>
+			<li><a href="#finances">Finances</a></li>
+			<li><a href="#demographics">Demographics</a></li>
+		</ul>
+	</div>
+</nav>
+
+
+
+<div id="main-content-section">
+
+
+	<div class="grid-x overview section alt" id="starts">
+		<div class="cell small-12">
+			<h2>It starts with employers...</h2>
+
+			<div class="grid-x" data-equalizer data-equalize-on="medium">
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}Sector_Partnerships" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-building-20.svg" %}" class="icon" alt="ofice building" />
+							<strong class="score"><span>{{Sector_Partnerships}}</span></strong> <span class="rjri-button">Sector Partnerships</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}Employers_Served" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-building-24.svg" %}" class="icon" alt="shop building" />
+							<strong class="score"><span>{{Employers_Served}}</span></strong> <span class="rjri-button">Employers Served</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}Industry_Sectors" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-building-26.svg" %}" class="icon" alt="industrial building" />
+							<strong class="score"><span>{{Industry_Sectors}}</span></strong> <span class="rjri-button">Industry Sectors</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="grid-x overview section alt" id="workforce">
+		<div class="cell small-12">
+			<h2>...who develop workforce solutions...</h2>
+
+			<div class="grid-x" data-equalizer data-equalize-on="medium">
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}New_Hire_Training_Activities" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-certificate-9.svg" %}" class="icon" alt="certificate" />
+							<strong class="score"><span>{{New_Hire_Training_Activities}}</span></strong> <span class="rjri-button">New Hire Training Activities</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}Incumbent_Worker_Training_Activities" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-school-7.svg" %}" class="icon" alt="training" />
+							<strong class="score"><span>{{Incumbent_Worker_Training_Activities}}</span></strong> <span class="rjri-button">Incumbent Worker Training Programs</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-4">
+					<a href="{% url 'web:page' %}Pipeline_Development_Activities" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-certificate-6.svg" %}" class="icon" alt="award" />
+							<strong class="score"><span>{{Pipeline_Development_Activities}}</span></strong> <span class="rjri-button">Pipeline Development Activities</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-x overview section alt" id="opportunities">
+		<div class="cell small-12">
+			<h2>...and connect Rhode Islanders with opportunities</h2>
+
+			
+			
+
+			<div class="grid-x" data-equalizer data-equalize-on="medium">
+				<div class="cell medium-1"><!-- purely for layout --></div>
+				<div class="cell medium-2">
+					<a href="{% url 'web:page' %}New_Hires_Placed" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-chart-21.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{New_Hires_Placed}}</span></strong> <span class="rjri-button">New Hires Placed</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-2">
+					<a href="{% url 'web:page' %}Incumbent_Workers_Upskilled" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-school-17.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Incumbent_Workers_Upskilled}}</span></strong> <span class="rjri-button">Incumbent Workers Upskilled</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-2">
+					<a href="{% url 'web:page' %}College_Internships_Completed" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-book-16.svg" %}" class="icon" alt="Book" />
+							<strong class="score"><span>{{College_Internships_Completed}}</span></strong> <span class="rjri-button">College Internships Completed</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-2">
+					<a href="{% url 'web:page' %}New_Career_Technial_High_School_Programs" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-id-card-14.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{New_Career_Technial_High_School_Programs}}</span></strong> <span class="rjri-button">New Career & Technical High School Programs</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-2">
+					<a href="{% url 'web:page' %}High_School_Students_Completing_Internships" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-school-11.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{High_School_Students_Completing_Internships}}</span></strong> <span class="rjri-button">High School Students Completing Internships</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-1"><!-- purely for layout --></div>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+
+	<div class="grid-x performance section" id="performance">
+	
+		<div class="cell small-12">
+			<h2>Data and Performance</h2>
+
+
+			<div class="grid-x" data-equalizer data-equalize-on="small">
+		
+				<div class="cell medium-4">
+					<a href="#performance" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-chart-16.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Placement_Rate}}</span></strong> <span class="rjri-button">Placement Rate</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-4">
+					<a href="#performance" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big" data-equalizer-watch>
+							<img src="{% static "web/images/icons/iconmonstr-banknote-15.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Avreage_Wage_After_Placement}}</span></strong> <span class="rjri-button">Average Wage After Placement</span>
+						</div>
+					</a>
+				</div>
+					
+				<div class="cell medium-4">
+					<a href="#performance" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-certificate-7.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Avreage_Wage_Gain}}</span></strong> <span class="rjri-button">Average Wage Gain of Incumbent Workder Trainees</span>
+						</div>
+					</a>
+				</div>
+			
+			</div>
+			
+		</div>
+
+	</div>
+	
+
+
+	<div class="grid-x finances section alt" id="finances">
+	
+		<div class="cell small-12">
+			<h2>Finances</h2>
+	
+
+			<div class="grid-x">
+				<div class="cell medium-6">
+					<a href="#finances" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-coin-7.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Cost_Per_Individual}}</span></strong> <span class="rjri-button">Cost Per Individual</span>
+						</div>
+					</a>
+				</div>
+				<div class="cell medium-6">
+					<a href="#finances" title="lorem ipsum dolor sit amet.">
+						<div class="scorecard big">
+							<img src="{% static "web/images/icons/iconmonstr-monitoring-1.svg" %}" class="icon" alt="" />
+							<strong class="score"><span>{{Benchmark_Cost}}</span></strong> <span class="rjri-button">Benchmark Cost</span>
+						</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	
+	</div>
+
+
+	<div class="grid-x demographics section" id="demographics">
+	
+		<div class="cell small-12">
+			<h2>Demographics</h2>
+
+					<div id="gender"></div>
+
+					<div id="education"></div>
+
+					<div id="ethnicity"></div>
+
+
+		</div>
+
+	</div>
+
+</div>
+
+
+	<footer>
+		<div class="data-info"><a href="#performance">Data and Performance</a>, <a href="#overview">Overview</a>, <a href="#finances">Finances</a>, <a href="#demographics">Demographics</a> data as of 10/31/2017.</div>
+		<div class="by">
+			<a href="https://datasparkri.org"><img src="{% static "web/images/dataspark-logo.png" %}" width="107" height="50" alt="Dataspark"></a>
+			<a href="https://www.uri.edu"><img src="{% static "web/images/the-university-or-rhode-island-logo.png" %}"  width="126" height="50" alt="The University of Rhode Island"></a>
+		</div>
+	</footer>
+
+	<!-- Compressed JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<script src="{% static "web/js/script.min.js" %}"></script>
+	
+
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dashboard</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+
+	<link rel="stylesheet" href="{% static 'web/style.css' %}"/>
+	
+</head>
+<body>
+	<header>
+		<div class="bg">
+			<h1><a href="{% url 'web:index' %}">Real Jobs <span>Rhode Island</span></a></h1>
+		</div>
+	</header>
+
+
+	<div class="grid-x section">
+		<h2>{{title}}</h2>
+		<p><strong>Definition:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet erat at enim consectetur, in suscipit dolor ullamcorper. Integer condimentum porta elit eget rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget egestas purus. Vestibulum id sollicitudin ante. Duis quis congue leo, venenatis pharetra elit. Praesent et nunc sed sem faucibus semper id at mi. Nullam et consequat diam. Donec porta vehicula mauris quis bibendum. Nulla tincidunt posuere eros, ac molestie lorem.</p>
+	
+		<p><a href="http://www.dlt.ri.gov/realjobs/pdfs/PartnershipProfiles2018.pdf">More information about Partnership profiles</a>.</p>
+
+
+		<table class="hover">
+			<thead>
+				<tr>
+				{% for field in fields %}
+					
+					{% if field|slice:"-4:" != "link" %}
+						<th>{{field|capfirst}}</th>
+					{% endif %}
+				{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+	
+
+
+				{% for res in section %}
+				<tr>
+				
+				{% if model_name == "Sector_Partnerships" %}
+					<th>{{res.partnership_title}}</th>    
+				    <td>{{res.target_industry}}</td>			
+				    <td><a href='{{res.organization_link}}' target='_blank'>{{res.lead_applicant_organization}}</a></td>
+					<td>{{res.contact_name}}</td>   		
+
+					{% if res.plan_link|length < 3 %}
+						<td>{{res.comprehensive_plan}}</td>
+					{% else %}
+						<td><a href='{{res.plan_link}}' target='_blank'>{{res.comprehensive_plan}}</a></td>
+					{% endif %}
+				
+						
+				{% elif model_name == "Employers_Served" %}
+					<th>{{res.employer}}</th>    
+				    
+				    {% if res.new_hire_training != '' %}
+						<td><img src="{% static 'web/images/yes.png' %}" width="15" /></td>
+				    {% else %}
+				    	<td></td>
+				    {% endif %}
+
+				    {% if res.incumbent_worker_training != '' %}
+						<td><img src="{% static 'web/images/yes.png' %}" width="15" /></td>
+				    {% else %}
+				    	<td></td>
+				    {% endif %}
+					
+				    <td>{{res.partnerships}}</td>	
+
+				{% elif model_name == "Industry_Sectors" %}
+					<th>{{res.partnership}}</th>					
+
+				{% elif model_name == "New_Hire_Training_Activities" %}
+					<th>{{res.partnership}}</th>
+					<td>{{res.description_of_training_activities}}</td>	
+
+				{% elif model_name == "Incumbent_Worker_Training_Activities" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.description_of_training_activities}}</td>
+
+				{% elif model_name == "Pipeline_Development_Activities" %}
+					<th>{{res.partnership}}</th>	
+
+				{% elif model_name == "New_Hires_Placed" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.new_hires_placed}}</td>
+
+				{% elif model_name == "Incumbent_Workers_Upskilled" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.incumbent_workers_upskilled}}</td>
+
+				{% elif model_name == "College_Internships_Completed" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.activity_description}}</td>
+					<td>{{res.college_internships_completed}}</td>
+
+				{% elif model_name == "New_Career_Technial_High_School_Programs" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.CTE_progam_description}}</td>
+
+				{% elif model_name == "High_School_Students_Completing_Internships" %}
+					<th>{{res.partnership}}</th>	
+					<td>{{res.activity_description}}</td>
+					<td>{{res.high_school_internships_completed}}</td>
+
+				{% endif %}
+
+
+
+
+				<!--	
+					{% for field in fields %}
+						<td>{{res.partnership_title}}</td>
+					{% endfor %}
+-->
+				</tr>
+				{% endfor %}
+		
+
+			</tbody>
+		</table>
+
+
+	</div>
+
+
+	<footer>
+		<div class="data-info"><a href="#performance">Data and Performance</a>, <a href="#overview">Overview</a>, <a href="#finances">Finances</a>, <a href="#demographics">Demographics</a> data as of 10/31/2017.</div>
+		<div class="by">
+			<a href="https://datasparkri.org"><img src="{% static 'web/images/dataspark-logo.png' %}" width="107" height="50" alt="Dataspark"></a>
+			<a href="https://www.uri.edu"><img src="{% static 'web/images/the-university-or-rhode-island-logo.png' %}" width="126" height="50" alt="The University of Rhode Island"></a>
+		</div>
+	</footer>
+
+	<!-- Compressed JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<script src="{% static 'web/js/script.min.js' %}"></script>
+	
+
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>

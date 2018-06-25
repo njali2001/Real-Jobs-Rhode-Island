@@ -1,0 +1,12 @@
+/**
+ * RJRI
+ * Real Jobs Rhode Island
+ * @version v0.1
+ * @author John Pennypacker <jpennypacker@uri.edu>
+ * License: 
+ * License URI: 
+
+*/
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600") all;body,h1,h2,h3,h4,h5,h6,p,div,ol,li{font-family:"Source Sans Pro",sans-serif}h2{font-weight:bold}a:link,a:visited{text-decoration:underline}a:hover{text-decoration:none}tbody th{font-weight:600;text-align:left}.logo{display:block;margin:0 auto 2rem;width:18rem}.intro{margin:1rem 1rem 0}.intro ul{list-style-position:inside}nav ul{list-style:none;margin:0 auto;text-align:center}nav ul li{display:inline-block}nav ul li a:link,nav ul li a:visited{background-color:#edf1f8;color:#000 !important;display:block;padding:.5em 1em;text-decoration:none !important}nav ul li a:hover{background-color:#507EBF !important;color:#fff !important}@media (min-width: 640px){nav ul li a{font-weight:bold;margin:0 1em}}@media (min-width: 640px){.logo{float:left;margin:0 2rem 2rem 0}}a:link,a:visited{color:#507EBE}header .bg,footer,.section{padding:1rem 2rem}.alt{background-color:#f5f9ff}.icon{height:auto;width:4rem}footer{background-color:#002147;color:#fff}footer a:link,footer a:visited{color:#fff}footer .by{padding:2rem 0;text-align:center}footer .by a:not(last){padding-right:3rem}.data-info{font-size:small;font-style:italic}.scorecard{margin:2rem auto 2rem;padding:2rem 1rem;text-align:center}.scorecard .score{display:block;font-size:3.5em;font-weight:bold}.scorecard .score span{color:#000;display:inline-block}.scorecard.big{font-size:1.125em}.scorecard.big .score{font-size:4.25em}.scorecard.bleed{max-width:99% !important}.section .cell a{display:block}@media (min-width: 640px){.scorecard{max-width:11em}.scorecard.big{max-width:15em}}@media (min-width: 700px){.scorecard{max-width:17em}.scorecard.big{max-width:20em}}a:link .scorecard .score{text-decoration:none}a .scorecard{-webkit-transition:background 0.2s ease-in-out;transition:background 0.2s ease-in-out}a:link .scorecard{color:#000;text-decoration:underline}a:hover .scorecard{background-color:#edf1f8}.alt a .scorecard{-webkit-transition:none;transition:none}.alt a:link .scorecard{background-color:#edf1f8}.alt a:hover .scorecard{background-color:#DFE5F0}
+
+/*# sourceMappingURL=map/style.css.map */

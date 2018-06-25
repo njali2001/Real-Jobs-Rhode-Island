@@ -1,0 +1,76 @@
+/* ==============================
+   COLORS
+   ============================== */
+
+$uriblue: #002147;
+$keaneyblue: #2277b3;
+
+
+$black: #000000;
+$darkgrey: #404040;
+$midgrey: #999999;
+$grey: #dddddd;
+$lightgrey: #fafafa;
+$white: #ffffff;
+
+
+$blue: #507EBE;
+$lightblue: #7894B3;
+
+$green: #63A51A;
+$lightgreen: #8DAD69;
+
+$yellow: #D6C818;
+$lightyellow: #E4DC6C;
+
+$orange: #D48F1E;
+$lightorange: #E3B770;
+
+$red: #7D0010;
+$lightred: #AC5D67; // yeah, I know... pink
+
+$purple: #570B9A;
+$lightpurple: #9463BE; // also pretty pink, FWIW
+
+
+$link: #507EBE;
+$linkhover: #003287;
+
+
+
+/* ==============================
+   FAWNTS
+   ============================== */
+
+@import 
+url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600") all;
+
+$type-sans: 'Source Sans Pro', sans-serif;
+$type-serif: 'Georgia', serif;
+
+
+
+/* ==============================
+   EXTEND
+   ============================== */
+
+%transparent-background-image {
+  content: "";
+	background-repeat: no-repeat;
+	background-size: cover;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+%transition-all {
+	transition: all 0.2s ease-in-out;
+}
+
+
+@import 'page';
+@import 'scorecard';
+

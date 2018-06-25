@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dashboard</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+
+	<link rel="stylesheet" href="{% static "web/style.css" %}"/>
+	
+</head>
+<body>
+	<header>
+		<div class="bg">
+			<h1><a href="{% url 'web:index' %}">Real Jobs <span>Rhode Island</span></a></h1>
+		</div>
+	</header>
+	
+	{{debug}}
+
+	<div class="grid-x section">
+		
+
+		<form action="{% url "web:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+			{% csrf_token %}
+		    
+		    <h4><font color='red'><strong>!!!</strong></font> Uploading a new file <font color='red'> (.xlsx) </font> will override existing data</h4>
+		    
+		    <hr>
+		    <select name="section" id="section">
+				<option value="Sector_Partnerships"> 1. Sector Partnerships </option>
+				<option value="Employers_Served"> 2. Employers Served </option>
+				<option value="Industry_Sectors"> 3. Industry Sectors </option>
+				<option value="New_Hire_Training_Activities"> 4. New Hire Training Activities </option>
+				<option value="Incumbent_Worker_Training_Activities"> 5. Incumbent Worker Training Programs </option>
+				<option value="Pipeline_Development_Activities"> 6. Pipeline Development Activities </option>
+				<option value="New_Hires_Placed"> 7. New Hires Placed </option>
+				<option value="Incumbent_Workers_Upskilled"> 8. Incumbent Workders Upskilled </option>
+				<option value="College_Internships_Completed"> 9. College Internships Completed </option>
+				<option value="New_Career_Technial_High_School_Programs"> 10. New Career & Technical High School Programms </option>
+				<option value="High_School_Students_Completing_Internships"> 11. High School Students Completing Internships </option>
+				<option value="Performance_Finances"> Performance and Finances </option>
+Performance_Finances
+
+		    </select> <br/><br/>
+
+		    <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+			<br/><br/>					    
+		    <!-- <button class="btn btn-primary"> Upload </button>  -->
+			<input type="submit" value=" Submit " name="submit"> <p><h4>{{message}}</h4></p>
+
+			<br/><br/>
+			<h3>File Templates </h3>
+			<hr>
+
+			<table>
+				<tr>
+					<td><a href="../../static/web/files/xlsx/1. Sector Partnerships.xlsx">Sector Partnerships</a></td>
+					<td><a href="../../static/web/files/xlsx/2. Employers Served.xlsx">Employers Served</a></td>
+					<td><a href="../../static/web/files/xlsx/3. Industry Sectors.xlsx">Industry Sectors</a></td>
+				</tr>
+				<tr>
+					<td><a href="../../static/web/files/xlsx/4. New Hire Training Activities.xlsx">New Hire Training Activities</a></td>
+					<td><a href="../../static/web/files/xlsx/5. Incumbent Worker Training Activities.xlsx">Incumbent Worker Training Activities</a></td>
+					<td><a href="../../static/web/files/xlsx/6. Pipeline Development Activities.xlsx">Pipeline Development Activities</a></td>
+				</tr>
+				<tr>
+					<td><a href="../../static/web/files/xlsx/7. New Hires Placed.xlsx">New Hires Placed</a></td>
+					<td><a href="../../static/web/files/xlsx/8. Incumbent Worker Upskilled.xlsx">Incumbent Worker Upskilled</a></td>
+					<td><a href="../../static/web/files/xlsx/9. College Internships Completed.xlsx">College Internships Completed</a></td>
+				</tr>
+				<tr>
+					<td><a href="../../static/web/files/xlsx/10. New Career and Technical High School Programs.xlsx">New Career and Technical High School Programs</a></td>
+					<td><a href="../../static/web/files/xlsx/11. High School Students Completing Internships.xlsx">High School Students Completing Internships</a></td>
+					<td><a href="../../static/web/files/xlsx/Performance and Finances.xlsx">Performance and Finances</a></td>
+				</tr>
+			</table>
+			</form>
+	</div>		
+
+
+	<footer>
+		<div class="data-info"><a href="#performance">Data and Performance</a>, <a href="#overview">Overview</a>, <a href="#finances">Finances</a>, <a href="#demographics">Demographics</a> data as of 10/31/2017.</div>
+		<div class="by">
+			<a href="https://datasparkri.org"><img src="{% static 'web/images/dataspark-logo.png' %}" width="107" height="50" alt="Dataspark"></a>
+			<a href="https://www.uri.edu"><img src="{% static 'web/images/the-university-or-rhode-island-logo.png' %}" width="126" height="50" alt="The University of Rhode Island"></a>
+		</div>
+	</footer>
+
+	<!-- Compressed JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<script src="{% static "web/js/script.min.js" %}"></script>
+	
+
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>

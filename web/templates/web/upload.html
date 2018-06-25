@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dashboard</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+
+	<link rel="stylesheet" href="{% static "web/style.css" %}"/>
+	
+</head>
+<body>
+	<header>
+		<div class="bg">
+			<h1><a href="{% url 'web:index' %}">Real Jobs <span>Rhode Island</span></a></h1>
+		</div>
+	</header>
+	
+	<div class="grid-x section">
+		
+
+		<form action="{% url "web:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+			{% csrf_token %}
+			<div class="form-group">
+			    <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+			    <div class="col-md-8">
+			        <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+			    </div>                    
+			</div>
+			<div class="form-group">                    
+			    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+			         <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+			    </div> 
+			</div>
+			</form>
+	</div>		
+
+
+	<footer>
+		<div class="data-info"><a href="#performance">Data and Performance</a>, <a href="#overview">Overview</a>, <a href="#finances">Finances</a>, <a href="#demographics">Demographics</a> data as of 10/31/2017.</div>
+		<div class="by">
+			<a href="https://datasparkri.org"><img src="{% static "web/images/dataspark-logo.png" %}" width="107" height="50" alt="Dataspark"></a>
+			<a href="https://www.uri.edu"><img src="{% static "web/images/the-university-or-rhode-island-logo.png" %}" width="126" height="50" alt="The University of Rhode Island"></a>
+		</div>
+	</footer>
+
+	<!-- Compressed JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<script src="{% static "web/js/script.min.js" %}"></script>
+	
+
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>
