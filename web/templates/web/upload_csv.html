@@ -45,12 +45,13 @@
 				<option value="Performance_Finances"> Performance and Finances </option>
 Performance_Finances
 
-		    </select> <br/><br/>
+		    </select><br/><br/>
 
-		    <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
+		    <input type="file" name="csv_file" id="csv_file" class="form-control">
 			<br/><br/>					    
 		    <!-- <button class="btn btn-primary"> Upload </button>  -->
-			<input type="submit" value=" Submit " name="submit"> <p><h4>{{message}}</h4></p>
+		   	<input type="submit" value=" Download " name="download"> &nbsp; &nbsp; 
+			<input type="submit" value="  Upload  " name="submit"><br/> <p><h4>{{message|safe}}</h4></p>
 
 			<br/><br/>
 			<h3>File Templates </h3>

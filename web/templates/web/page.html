@@ -13,20 +13,24 @@
 	
 </head>
 <body>
-	<header>
-		<div class="bg">
-			<h1><a href="{% url 'web:index' %}">Real Jobs <span>Rhode Island</span></a></h1>
+
+<header class="grid-x" id="intro">
+
+		<div class="intro">
+			<figure class="logo">
+				<!-- <img src="images/RJRI.png" alt="Real Jobs Rhode Island">-->
+				<a href="{% url 'web:index' %}"><img src="{% static "web/images/RJRI.png" %}" alt="Real Jobs Rhode Island"></a>
+			</figure>
+			
+			<h1>{{title}}</h1>
+			<p><strong>Definition:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet erat at enim consectetur, in suscipit dolor ullamcorper. Integer condimentum porta elit eget rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget egestas purus. Vestibulum id sollicitudin ante. Duis quis congue leo, venenatis pharetra elit. Praesent et nunc sed sem faucibus semper id at mi. Nullam et consequat diam. Donec porta vehicula mauris quis bibendum. Nulla tincidunt posuere eros, ac molestie lorem.</p>
+			
+			<p><a href="http://www.dlt.ri.gov/realjobs/pdfs/PartnershipProfiles2018.pdf">More information about Partnership profiles</a>.</p>
 		</div>
-	</header>
+</header>
 
 
 	<div class="grid-x section">
-		<h2>{{title}}</h2>
-		<p><strong>Definition:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet erat at enim consectetur, in suscipit dolor ullamcorper. Integer condimentum porta elit eget rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget egestas purus. Vestibulum id sollicitudin ante. Duis quis congue leo, venenatis pharetra elit. Praesent et nunc sed sem faucibus semper id at mi. Nullam et consequat diam. Donec porta vehicula mauris quis bibendum. Nulla tincidunt posuere eros, ac molestie lorem.</p>
-	
-		<p><a href="http://www.dlt.ri.gov/realjobs/pdfs/PartnershipProfiles2018.pdf">More information about Partnership profiles</a>.</p>
-
-
 		<table class="hover">
 			<thead>
 				<tr>
@@ -39,7 +43,6 @@
 				</tr>
 			</thead>
 			<tbody>
-	
 
 
 				{% for res in section %}
@@ -113,14 +116,6 @@
 
 				{% endif %}
 
-
-
-
-				<!--	
-					{% for field in fields %}
-						<td>{{res.partnership_title}}</td>
-					{% endfor %}
--->
 				</tr>
 				{% endfor %}
 		

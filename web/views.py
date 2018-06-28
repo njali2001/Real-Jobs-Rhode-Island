@@ -6,11 +6,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 # from django.template import loader
 from .models import Sector_Partnerships,Employers_Served,Industry_Sectors,New_Hire_Training_Activities,Incumbent_Worker_Training_Activities,Pipeline_Development_Activities,New_Hires_Placed,Incumbent_Workers_Upskilled,College_Internships_Completed,New_Career_Technial_High_School_Programs,High_School_Students_Completing_Internships,Performance_Finances
 
-# from .forms import UploadFileForm 	# To be deleted
-
 from django.urls import reverse
 
 import openpyxl		# used for import xlsx file
+
+import xlsxwriter 	# used for export xlsx file
+
+import io
 
 object_type = { 'Sector_Partnerships':Sector_Partnerships,
 				'Employers_Served':Employers_Served,
@@ -34,31 +36,71 @@ def upload_csv(request):
         return render(request, "web/upload_csv.html", data)
     # if not GET, then proceed
     try:
-        section = request.POST['section']
-        object_type[section].objects.all().delete()			# delete existing data, if switch to append, this line can be removed
-        excel_file = request.FILES["csv_file"]
-        wb = openpyxl.load_workbook(excel_file)
-
-        if not excel_file.name.endswith('.xlsx'):			# Valid the suffix of file
-            messages.error(request,'File is not xlsx type')
-            return HttpResponseRedirect(reverse("web:upload_csv"))
         
-        worksheet = wb.active
-        message = str(excel_file) +  ' has been uploaded'
-        
-        row_ind = 0											# row_ind used for skip the header line in the file
-        for row in worksheet.iter_rows():
-	        if row_ind > 0:
-	        	table = object_type[section]()
-	        	columns = [f.name for f in table._meta.get_fields()[1:]]	# Read the filed name dynamically
-	        	if row[0].value != '':
-	        		ind = 0
-	        		for column in columns:
-	        			setattr(table,column,row[ind].value) 				# assign the value to the attribute
-	        			ind += 1
-	        		table.save()
-	        row_ind += 1
+    	if 'download' in request.POST:
+    		section = request.POST['section']
 
+    		file_name = section +'.xlsx';
+
+    		workbook = xlsxwriter.Workbook('web/static/web/files/download/'+file_name)
+    		worksheet = workbook.add_worksheet()
+
+    		table = object_type[section]()
+    		columns = [f.name for f in table._meta.get_fields()[1:]]
+    		result = object_type[section].objects.all()
+
+    		title = [e.replace("_"," ").capitalize() for e in columns]
+
+    		content = (title,)
+
+    		for res in result:
+    			row_res = [getattr(res,column) for column in columns]
+    			content += (row_res,)
+
+    		row = 0
+
+    		for obs in content:
+    			col = 0
+    			for column in obs:
+    				worksheet.write(row,col,column)
+    				col += 1
+    			row += 1
+
+    		workbook.close()
+    		message = 'Your file is ready! <a href="../../static/web/files/download/'+file_name+'">Click here</a> to download '
+
+    	elif 'submit' in request.POST:
+	        section = request.POST['section']
+	        
+	        if len(request.FILES) == 0:
+	        	context = {'message':'<font color="red">You forgot to choose the file.</font>'}		# return the processresult
+	        	return render(request,'web/upload_csv.html',context)
+
+	        excel_file = request.FILES["csv_file"]
+	        
+	        if not excel_file.name.endswith('.xlsx'):			# Valid the suffix of file
+	            # messages.error(request,'File is not xlsx type')
+	            context = {'message':'<font color="red">Only xlsx fils is allowed.</font>'}		# return the processresult
+	            return render(request,'web/upload_csv.html',context)
+
+	            # return HttpResponseRedirect(reverse("web:upload_csv"))
+	        object_type[section].objects.all().delete()			# delete existing data, if switch to append, this line can be removed
+	        message = '<font color="green">'+ str(excel_file) +  ' has been uploaded. </font>'
+	        wb = openpyxl.load_workbook(excel_file)
+	        worksheet = wb.active
+	        row_ind = 0											# row_ind used for skip the header line in the file
+	        for row in worksheet.iter_rows():
+	        	if row_ind > 0:
+	        		table = object_type[section]()
+	        		columns = [f.name for f in table._meta.get_fields()[1:]]	# Read the filed name dynamically
+	        		if row[0].value != '':
+	        			ind = 0
+	        			for column in columns:
+			       			setattr(table,column,row[ind].value) 				# assign the value to the attribute
+			       			ind += 1
+			       		table.save()
+
+		        row_ind += 1  	
 
 ############################################################
 #
